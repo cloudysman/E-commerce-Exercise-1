@@ -1,0 +1,74 @@
+<!-- books_list.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Book List</title>
+    <!-- Thêm các tệp CSS Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Book List</h1>
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Catalog</th>
+                    <th>Public Year</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    <th>Sold</th>
+                    <th>Description</th>
+                    <th>Action</th>  <!-- Thêm cột Action cho nút Add to Cart -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                    <tr>
+                        <td>{{ book.title }}</td>
+                        <td>{{ book.author }}</td>
+                        <td>{{ book.catalog }}</td>
+                        <td>{{ book.publish_year }}</td>
+                        <td>{{ book.price }}</td>
+                        <td>{{ book.stock }}</td>
+                        <td>{{ book.sold }}</td>
+                        <td>{{ book.description }}</td>
+                        <td>
+                            <button class="btn btn-primary btn-sm" onclick="addToCart('{{ book.title }}', '{{ book.price }}')">Add to Cart</button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            
+        </table>
+
+        <!-- Thêm nút View Cart -->
+        <div class="text-right">
+            <button class="btn btn-success" onclick="viewCart()">View Cart</button>
+        </div>
+    </div>
+
+    <!-- Thêm các tệp JS Bootstrap (Popper.js và jQuery) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Thêm mã JavaScript để xử lý chức năng Add to Cart và View Cart -->
+    <script>
+        function addToCart(title, price) {
+            // Thêm mã xử lý để thêm sách vào giỏ hàng (có thể sử dụng AJAX để gửi yêu cầu đến server)
+            alert('Added ' + title + ' to the cart. Price: ' + price);
+        }
+
+        function viewCart() {
+            // Thêm mã xử lý để chuyển người dùng đến trang xem giỏ hàng (có thể làm chuyển hướng trang hoặc sử dụng modal)
+            alert('cart');
+        }
+    </script>
+</body>
+</html>
